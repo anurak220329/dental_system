@@ -54,6 +54,42 @@ class Main extends CI_Controller {
 		$this->load->view('Admin',$result);
 	}
 
+	public function profile()
+	{
+		$idUser =  $this->session->userdata('idUser');
+		$result['DT'] = $this->DT->get_profile($idUser);
+		$this->load->view('Profile',$result);
+		
+	}
+
+	public function edit()
+	{
+		$idUser =  $this->session->userdata('idUser');
+		$result['DT'] = $this->DT->get_profile($idUser);
+		$this->load->view('Editprofile',$result);
+	}
+
+	public function edit_profile()
+	{
+		$data = array(
+			'name' => $this->input->post("name"),
+			'lname' => $this->input->post("lname"),
+			'phone'=> $this->input->post("phone"),
+			'gender'=> $this->input->post("gender"),
+			'congenitaldisease'=> $this->input->post("congenitaldisease"),
+			'allergic'=> $this->input->post("allergic"),
+			'blood'=> $this->input->post("blood"),
+			'email'=> $this->input->post("email"),
+			'emergencycontract'=> $this->input->post("emergencycontract"),
+			'emergencyphone'=> $this->input->post("emergencyphone"),
+		);
+		$this->DT->update_profile($data);
+			
+		$idUser =  $this->session->userdata('idUser');
+		$result['DT'] = $this->DT->get_profile($idUser);
+		$this->load->view('Profile',$result);
+			echo '<script>alert("แก้ไขโปรไฟล์เสร็จเรียบร้อย")</script>'; 
+	}
 	public function reg_menu(){
 		$data = array(
 			'name' => $this->input->post("name"),

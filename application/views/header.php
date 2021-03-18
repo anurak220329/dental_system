@@ -62,7 +62,7 @@
         } 
         ?>
           <li class="nav-item">
-            <a href="../index.html" class="nav-link"  style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-single-02"></i><?php echo $this->session->userdata('name'); ?></a>
+            <a href="../Main/profile" class="nav-link"  style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-single-02"></i><?php echo $this->session->userdata('name'); ?></a>
           </li>
       
           <li class="nav-item">

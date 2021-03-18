@@ -53,6 +53,16 @@ class Menu_dental extends CI_Model {
                 return $query->result();
                 }
 
+                function get_profile($idUser){
+                    $this->db->select('*');
+                    $this->db->from('user');
+                   
+                    $this->db->where('idUser', $idUser);
+                    
+                    $query = $this->db->get();
+                    return $query->result();
+                    }
+
                 function get_update($idDental)
                 {
                 $query=$this->db->query("select * from dentalitems where idDental='".$idDental."'");
@@ -63,6 +73,14 @@ class Menu_dental extends CI_Model {
 	{
 	$query=$this->db->query("update dentalitems SET idDoctor='$idDoctor',status='$status' where idDental='$idDental'");
 	}
+
+                function Update_profile($data)
+                {
+                 $idUser =  $this->session->userdata('idUser');
+                 $this->db->where('idUser', $idUser);
+                  $this->db->update('user', $data);
+                 }
+
 
     function validate($email,$password){
         $this->db->where('email',$email);
