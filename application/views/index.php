@@ -17,7 +17,11 @@ The above copyright notice and this permission notice shall be included in all c
 <!DOCTYPE html>
 
 <html lang="en">
-
+<head>
+<title>
+   Index
+  </title>
+</head>
 
 <body class="landing-page sidebar-collapse">
 <?php
