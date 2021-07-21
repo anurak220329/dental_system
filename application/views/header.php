@@ -35,7 +35,7 @@
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="../Main/index2"  style="font-size : 24px;  font-family: 'Kanit', sans-serif; " rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" >
-          ระบบจองคิวทันตกรรม
+          จองคิวทันตกรรม
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar bar1"></span>
@@ -49,6 +49,9 @@
         // All users list
         if( $this->session->userdata('level') == 2)  {
             ?>
+             <li class="nav-item">
+            <a href="../Main/books" class="nav-link" style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-zoom-split"></i> ตรวจสอบ</a>
+          </li>
           <li class="nav-item">
             <a href="../Main/book" class="nav-link" style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-time-alarm"></i> จองคิว</a>
           </li>

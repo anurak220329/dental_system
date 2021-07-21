@@ -13,10 +13,8 @@ class Menu_dental extends CI_Model {
         function get_book($idUser){
             $this->db->select('*');
             $this->db->from('dentalitems');
-           
             $this->db->where('idUser', $idUser);
             $this->db->where('status', "รอเจ้าหน้าที่ตรวจสอบ");
-            
             $query = $this->db->get();
             return $query->result();
             }
@@ -24,7 +22,7 @@ class Menu_dental extends CI_Model {
             function get_doc($name){
                 $this->db->select('*');
                 $this->db->from('dentalitems');
-                $this->db->where('idDoctor', $name);
+                $this->db->where('nameDoctor', $name);
                
                 $this->db->join('user', 'user.idUser = dentalitems.idUser', 'left');
                
@@ -35,10 +33,10 @@ class Menu_dental extends CI_Model {
 
             function get_his($idUser){
                 $this->db->select('*');
-                $this->db->from('dentalitems');
+                $this->db->from('backup');
                
                 $this->db->where('idUser', $idUser);
-                $this->db->where('status', "สำเร็จ");
+                $this->db->where('status', "ชำระเงินแล้ว");
                 
                 $query = $this->db->get();
                 return $query->result();
@@ -65,14 +63,33 @@ class Menu_dental extends CI_Model {
 
                 function get_update($idDental)
                 {
-                $query=$this->db->query("select * from dentalitems where idDental='".$idDental."'");
+                $query=$this->db->query("select * from dentalitems  where idDental='".$idDental."'");
                 return $query->result();
                 }
 
-                function update_records($idDoctor,$status,$idDental)
+                function get_finish($idDental)
+                {
+                $query=$this->db->query("select * from dentalitems  where idDental='".$idDental."'");
+                return $query->result();
+                }
+
+                function update_records($nameDoctor,$status,$idDental)
 	{
-	$query=$this->db->query("update dentalitems SET idDoctor='$idDoctor',status='$status' where idDental='$idDental'");
+	$query=$this->db->query("update dentalitems SET nameDoctor='$nameDoctor',status='$status' where idDental='$idDental'");
 	}
+
+
+    function insert_records($idDental,$idUser,$date,$time,$dentalname,$nameDoctor,$status)
+	{
+	$query=$this->db->query("INSERT INTO backup (idDental, idUser, date, time, dentalname, nameDoctor, status )
+    VALUES ('$idDental', '$idUser', '$date', '$time', '$dentalname', '$nameDoctor', '$status')");
+    $query1=$this->db->query("delete from dentalitems where idDental='$idDental'");
+	}
+     
+    function insert_backup($data,$idDental){
+        $this->db->insert('backup',$data);
+        $query=$this->db->query("delete from dentalitems where idDental='$idDental'");
+    }
 
                 function Update_profile($data)
                 {
@@ -89,7 +106,22 @@ class Menu_dental extends CI_Model {
         return $result;
       }
 
+      function checkdate($date,$time){
+        $this->db->where('date',$date);
+        $this->db->where('time',$time);
+        $result = $this->db->get('dentalitems',1);
+        return $result;
+      }
 
+      function check_book($date){
+        
+        $this->db->select('*');
+        $this->db->from('dentalitems');
+        $this->db->where('date',$date);
+        $query = $this->db->get();
+        return $query->result();
+        }
+      
      
 
 

@@ -41,36 +41,30 @@
     <?php
       foreach($data as $row){
     ?>
-    <form  method="post" >
+    <form  method="post" action="../Main/backup" >
       <div class="container">
         <tr>
           <td>
           <br></br> <br></br> 
-          <h1>อัพเดทข้อมูลการจอง</h1>
-          <br /> <br /> <br />
-            <input type="text" hidden name="Std_ID"  value="<?php echo $row->idDental; ?>" </th><br>
+          <h1>ตรวจสอบข้อมูล</h1>
+          <br /> 
+            <input type="text" hidden name="idDental"  value="<?php echo $row->idDental; ?>" </th><br>
 
-           
+            <input type="text" hidden name="idUser"  value="<?php echo $row->idUser; ?>" </th><br>
+            
 
             <th><a class="title">ประเภททันตกรรม </a>
-              <input class="form-control" type="text" name="Company_Tel" value="<?php echo $row->dentalname; ?>" readonly/>
+              <input class="form-control" type="text" name="dentalname" value="<?php echo $row->dentalname; ?>" readonly/>
             </th><br>
             <th><a class="title">วันที่จอง </a>
-              <input class="form-control" type="text" name="Company_Tel" value="<?php echo $row->date; ?>"  readonly/>
+              <input class="form-control" type="text" name="date" value="<?php echo $row->date; ?>"  readonly/>
             </th><br>
             <th><a class="title">เวลาที่จอง</a>
-              <input class="form-control" type="text" name="Company_Tel" value="<?php echo $row->time; ?>"  readonly/>
+              <input class="form-control" type="text" name="time" value="<?php echo $row->time; ?>"  readonly/>
             </th><br>
             <th><a class="title">ชื่อแพทย์ </a>
-            <select class="form-control" id="nameDoctor" style="font-size : 17px; color: #000000;" name="nameDoctor" >
-            <option id="nameDoctor" name="nameDoctor"  value="<?php echo $row->nameDoctor; ?>"><?php echo $row->nameDoctor; ?>
-        </option>
-            <option id="nameDoctor" name="nameDoctor"  value="นายแพทย์1">นายแพทย์1</option>  
-        <option id="nameDoctor" name="nameDoctor" value="นายแพทย์2">นายแพทย์2</option>
-        <option id="nameDoctor" name="nameDoctor" value="นายแพทย์3">นายแพทย์3</option>
-  
-  
-</select>
+            <input class="form-control" type="text" name="nameDoctor" value="<?php echo $row->nameDoctor; ?>"  readonly/>
+            
             </th><br>
 
             
@@ -81,8 +75,7 @@
               <select class="form-control" id="status" style="font-size : 17px; color: #000000;" name="status" >
             <option id="status" name="status"  value="<?php echo $row->status; ?>"><?php echo $row->status; ?>
         </option>
-            <option id="status" name="status"  value="ไม่สะดวกรับการจอง">ไม่สะดวกรับการจอง</option>  
-        <option id="status" name="status" value="สำเร็จ">สำเร็จ</option>
+         
         <option id="status" name="status" value="ชำระเงินแล้ว">ชำระเงินแล้ว</option>
   
   
@@ -97,7 +90,7 @@
       ?>
       <br>
       <center>
-      <input type="submit" name="update" class="btn btn-success" value="อัพเดท"/>
+      <input type="submit" name="updates" class="btn btn-success" value="ชำระเงินเสร็จเรียบร้อย"/>
       <a type="button" href="../Main/showadmin" class="btn btn-warning">ย้อนกลับ</a>
       </center><br><br>
     </form>             

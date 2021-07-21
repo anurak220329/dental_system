@@ -86,7 +86,7 @@ The above copyright notice and this permission notice shall be included in all c
 
           <div class="row">
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">กร๊ปเลือด</label>
+          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">กรุ๊ปเลือด</label>
           <h4> <?=$row->blood;?></h4>
           </div>
           <div class="col-6">

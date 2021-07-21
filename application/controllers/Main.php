@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+error_reporting(0);
 class Main extends CI_Controller {
 	function __construct(){
 		parent::__construct();
@@ -18,6 +18,10 @@ class Main extends CI_Controller {
 	public function book()
 	{
 		$this->load->view('Book');
+	}
+	public function books()
+	{
+		$this->load->view('checkbook');
 	}
 	public function Register()
 	{
@@ -117,25 +121,47 @@ class Main extends CI_Controller {
 	}
 
 	public function booking(){
+		$date    = $this->input->post('date',TRUE);
+		$time    = $this->input->post('time',TRUE);
+		$checkdate = $this->DT->checkdate($date,$time);
+		$data1  = $checkdate->row_array();
+		$date1  = $data1['date'];
+		$time1  = $data1['time'];
+		$day = date("20y-m-d");
+	
 		$data = array(
 			'dentalname' => $this->input->post("dentalname"),
 			'date' => $this->input->post("date"),
 			'time' => $this->input->post("time"),
 			'idUser' => $this->input->post("idUser"),
 			'status' => ("รอเจ้าหน้าที่ตรวจสอบ"),
-			'idDoctor' => ("รอเจ้าหน้าที่ระบุ"),
+			'nameDoctor' => ("รอเจ้าหน้าที่ระบุ"),
 		);
 
-		
-
-		if($this->input->post("dentalname")!= "" && $this->input->post("date")!== ""){
+		if($this->input->post("date") < $day){
+			
+			
+			$this->load->view('Book');
+			echo '<script>alert("ไม่สามารถจองย้อนหลังได้ค่ะ")</script>'; 
+		}
+		else if($this->input->post("date")!= $date1 && $this->input->post("time")!== $time1){
 			$this->DT->insert_dentalitems($data);
 			
-			$this->load->view('index');
+			$this->showbook();
 			echo '<script>alert("จองคิวเรียบร้อย")</script>'; 
 		}else {
-			echo "ไม่สามารถเพิ่มข้อมูลได้ค่ะ !";
+			echo '<script>alert("วันและเวลานี้มีคนจองแล้วค่ะ !")</script>'; 
+			echo '<script>alert("กรุณาลองเปลี่ยนเวลาการจองค่ะ")</script>'; 
+			$this->load->view('Book');
 		}
+
+	}
+
+	public function checkbooking(){
+		$date    = $this->input->post('date',TRUE);
+		$result['DT'] = $this->DT->check_book($date);
+		$this->load->view('checkbook',$result);
+		
 
 	}
 
@@ -147,14 +173,41 @@ class Main extends CI_Controller {
 	
 		if($this->input->post('update'))
 		{
-		$idDoctor=$this->input->post('idDoctor');
+		$nameDoctor=$this->input->post('nameDoctor');
 		$status=$this->input->post('status');
 		$iddental=$this->input->post('idDental');
-		$this->DT->update_records($idDoctor,$status,$idDental);
+		$this->DT->update_records($nameDoctor,$status,$idDental);
 		echo "อัพเดทเสร็จเรียบร้อย !";
 		}
 	}
 
+	public function finish()
+	{
+	$idDental=$this->input->get('idDental');
+	$result['data']=$this->DT->get_finish($idDental);
+	$this->load->view('Finish',$result);
+	
+		
+	}
+
+	public function backup(){
+		$idDental=$this->input->post('idDental');
+		$data = array(
+		'idDental'=> $this->input->post('idDental'),
+		'idUser'=> $this->input->post('idUser'),
+		'date'=> $this->input->post('date'),
+		'time'=> $this->input->post('time'),
+		'dentalname'=> $this->input->post('dentalname'),
+		'nameDoctor'=> $this->input->post('nameDoctor'),
+		'status'=> $this->input->post('status'),
+		);
+
+			$this->DT->insert_backup($data,$idDental);
+			
+			$this->showadmin();
+			echo '<script>alert("อัพเดทเสร็จเรียบร้อย !")</script>'; 
+
+	}
 
 	function auth(){
 		$email    = $this->input->post('email',TRUE);

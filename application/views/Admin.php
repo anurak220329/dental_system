@@ -60,9 +60,10 @@ The above copyright notice and this permission notice shall be included in all c
   echo "<td>".$row->dentalname."</td>";
   echo "<td>".$row->date."</td>";
   echo "<td>".$row->time."</td>";
-  echo "<td>".$row->idDoctor."</td>";
+  echo "<td>".$row->nameDoctor."</td>";
   echo "<td>".$row->status."</td>";
   echo "<td><a type='button' class='btn btn-primary btn-round' href='update?idDental=".$row->idDental."'>อัพเดท</a></td>";
+  echo "<td><a type='button' class='btn btn-success btn-round' href='finish?idDental=".$row->idDental."'>ชำระเงินแล้ว</a></td>";
   echo "</tr>";
  
   }

@@ -40,7 +40,7 @@
       <th scope="row"><?php echo $row->dentalname ?></th>
       <td><?php echo $row->date ?></td>
       <td><?php echo $row->time ?></td>
-      <td><?php echo $row->idDoctor ?></td>
+      <td><?php echo $row->nameDoctor ?></td>
       <td><?php echo $row->status ?></td>
     </tr>
    
