@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="../Main/index"  style="font-size : 24px;  font-family: 'Kanit', sans-serif; " rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" >
+        <a class="navbar-brand" href="../Main/index"  style="font-size : 24px; font-family: 'Prompt', sans-serif; " rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" >
           ระบบจองคิวทันตกรรม
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </div>
 </div> -->
-<div class="page-header" style="background-image: url('../../assets/img/head.jpg');">
+<div class="page-header" style="background-image: url('../../assets/img/D002.jpg');">
     <div class="filter"></div>
     <div class="container">
       <div class="row">

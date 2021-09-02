@@ -21,20 +21,26 @@
           เลือกวันที่ต้องการจองคิว 
           <form method="post" action="../Main/testss">
           
+          <?php
         
+        foreach($DTS as $row){
+ ?>
+
           <div class="input" >
          
         
            <label for="Date_Of_Birth"></label>
-            <input type="date" name="dates"   onchange="javascript: if(this.value != '0') this.form.submit(); else alert('hello');" />
+            <input type="date" name="dates" value="<?php echo $row->date; ?>"  onchange="javascript: if(this.value != '0') this.form.submit(); else alert('hello');" />
          
           
          
           </div>
         </p>
-      
+      <?php
+        }
+        ?>
         </form>
-    <form method="post" action="../Main/booking">
+    <form method="post" action="../Main/bookingss">
     
      
     
@@ -187,7 +193,7 @@
         }
         ?>
 <br><br>
-      
+ 
         <br><br>
         <input type="text" name="idUser" value="<?php echo $this->session->userdata('idUser'); ?>" hidden/>
        

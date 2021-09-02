@@ -16,22 +16,22 @@
 ?>
  <br></br><br></br><br></br>
  <div class="box3">
-  
-
+          <h1>ตรวจสอบการจองคิว</h1>
+<br>
       <form method="post" action="../Main/checkbooking">
       <div class="row">
    <p>
-         เลือกวันที่ต้องการตรวจสอบ
+         กรอกรหัสการจองคิวทันตกรรม
          </p>
          </div>
          <br />
          <div class="row">
          <div class="col-3">
            <label for="Date_Of_Birth"></label>
-           <input type="date" name="date"/>
+           <input type="text" name="idDental" />
          </div>
          <div class="col-6"> 
-           <button type="submit" class="btn btn-primary">ตรวจสอบ</button>
+           <button type="submit" class="btn btn-primary">ค้นหา</button>
         </div>
          </div>
          </form>
@@ -39,27 +39,40 @@
          <table class="table table-dark">
   <thead>
     <tr>
-  
+    <th scope="col">รหัสทันตกรรม</th>
       <th scope="col">รายการทันตกรรม</th>
+      <th scope="col">วันที่จอง</th>
       <th scope="col">เวลาที่จอง</th>
+      <th scope="col">ชื่อแพทย์</th>
+      <th scope="col">สถานะ</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
-         <?php
         
-        foreach($DT as $row){
- ?>
-     
-     <tr>
-       <th scope="row"><?php echo $row->dentalname ?></th>  
-       <td><?php echo $row->time ?></td>    
-     </tr>
+     <?php
+       
+       foreach($DT as $row){
+
     
+    echo "<tr>";
+  
+
+  echo "<td>".$row->idDental."</td>";
+  echo "<td>".$row->dentalname."</td>";
+  echo "<td>".$row->date."</td>";
+  echo "<td>".$row->time."</td>";
+  echo "<td>".$row->nameDoctor."</td>";
+  echo "<td>".$row->status."</td>";
+  echo "<td><a type='button' 
+  style ='padding-top: 8px; margin-top: 3px;'
+ class='btn btn-warning btn-round' href='finishcheck?idDental=".$row->idDental."'>แก้ไข</a></td>";
+  echo "</tr>";
+}
+?>
      
   </tbody>
-  <?php
-         }
-         ?>
+
 </table>
 
 </div>

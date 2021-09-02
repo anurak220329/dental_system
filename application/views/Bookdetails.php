@@ -1,9 +1,9 @@
 <html>
     <head>
-    <!-- CSS only -->
     <title>
-    History
+    Bookdetail
   </title>
+    <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="../../assets/css/regis.css" rel="stylesheet" />
 </head>
@@ -14,41 +14,44 @@
 	include_once "header.php";
     
 ?>
-    
-   
+
     <br></br><br></br><br></br>
       <div class="box1" >
-     <center> <h1>ประวัติการจองคิวทันตกรรม</h1> </center>
+     <center> <h1>รายการจองคิวทันตกรรม</h1> </center>
      <br /> <br />
      <table class="table table-striped table-dark">
-     <thead>
+  <thead>
     <tr>
     <th scope="col">รหัสการจอง</th>
-      <th scope="col">รายการทันตกรรม</th>
+      
       <th scope="col">วันที่จอง</th>
       <th scope="col">เวลาที่จอง</th>
-      <th scope="col">ชื่อแพทย์</th>
-      <th scope="col">สถานะ</th>
+      <th scope="col">เลือกรายการทันตกรรมและแพทย์</th>
+     
     </tr>
   </thead>
   <tbody>
   <?php
        
        foreach($DT as $row){
+
+    
+    echo "<tr>";
+  
+
+  echo "<td>".$row->idDental."</td>";
+  echo "<td>".$row->date."</td>";
+  echo "<td>".$row->time."</td>";
+  
+ 
+  
+  echo "<td><a type='button' class='btn btn-success btn-round' href='testt?idDental=".$row->idDental."'>เลือก</a></td>";
+  echo "</tr>";
+}
 ?>
-    <tr>
-    <th scope="row"><?php echo $row->idDental ?></th>
-      <td><?php echo $row->dentalname ?></td>
-      <td><?php echo $row->date ?></td>
-      <td><?php echo $row->time ?></td>
-      <td><?php echo $row->nameDoctor ?></td>
-      <td><?php echo $row->status ?></td>
-    </tr>
-   
   </tbody>
-  <?php
-        }
-        ?>
+  
+       
 </table>
 
 

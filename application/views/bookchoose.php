@@ -24,9 +24,7 @@ The above copyright notice and this permission notice shall be included in all c
   </title>
 </head>
 
-<body style="background-color: #013A6B;
-  background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);
-  min-height: 500px;">
+<body class="profile-page sidebar-collapse">
 <?php
 	include_once "header.php";
     
@@ -35,15 +33,13 @@ The above copyright notice and this permission notice shall be included in all c
   <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../../assets/img/headeradmin.png');">
     <div class="filter"></div>
   </div>
-  <center> <h1 style="color:white;">รายการจองคิวทันตกรรม</h1> </center>
+  <center> <h1>รายการจองคิวทันตกรรม</h1> </center>
      <br /> <br />
 	 <div class="container">
      <table class="table table-striped table-dark">
   <thead>
     <tr>
-	<th scope="col">ชื่อผู้จอง</th>
-	<th scope="col">นามสกุลผู้จอง</th>
-      <th scope="col">รายการทันตกรรม</th>
+    <th scope="col">รายการทันตกรรม</th>
       <th scope="col">วันที่จอง</th>
       <th scope="col">เวลาที่จอง</th>
       <th scope="col">ชื่อแพทย์</th>
@@ -57,15 +53,12 @@ The above copyright notice and this permission notice shall be included in all c
   foreach($DT as $row)
   {
   echo "<tr>";
-  echo "<td>".$row->name."</td>";
-  echo "<td>".$row->lname."</td>";
   echo "<td>".$row->dentalname."</td>";
   echo "<td>".$row->date."</td>";
   echo "<td>".$row->time."</td>";
   echo "<td>".$row->nameDoctor."</td>";
   echo "<td>".$row->status."</td>";
-  
-  echo "<td><a type='button' class='btn btn-warning btn-round' href='finish?idDental=".$row->idDental."'>แก้ไข</a></td>";
+  echo "<td><a type='button' class='btn btn-primary btn-round' href='bookings?idDental=".$row->idDental."'>ตรวจสอบการจอง</a></td>";
   echo "</tr>";
  
   }

@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" href="../../assets/img//favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Editprofile
+    Update
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -15,9 +15,9 @@
   <!-- CSS Files -->
   <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
-  <link href="../../assets/css/regis.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../../assets/demo/demo.css" rel="stylesheet" />
+  <link href="../../assets/css/regis.css" rel="stylesheet" />
   <script src="../../assets/js/core/jquery.min.js" type="text/javascript"></script>
   <script src="../../assets/js/core/popper.min.js" type="text/javascript"></script>
   <script src="../../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
@@ -38,59 +38,47 @@
   min-height: 500px;">
  <!-- Navbar -->
  
-   
-    <br /> <br /> <br />
-             
-    <?php
-      foreach($DT as $row){
-    ?>
-    <div class="box1">
-    <form  method="post" action="../Main/edit_profile">
+ <?php
+	include_once "header.php";
+    
+?>
+    <br /> <br /> <br /> <br /> <br />
+    <div class="box3">
+    
+    <form  method="post" action="../Main/choose" >
       <div class="container">
         <tr>
           <td>
-          
-          <h1>อัพเดทข้อมูลส่วนตัว</h1>
-          <br />
-            <input type="text" hidden name="idUser"  value="<?php echo $row->idUser; ?>" </th><br>
-
+        
+          <h1>รายชื่อทันตแพทย์ที่ว่าง</h1>
+          <br /> <br /> <br />
            
 
-            <th><p >ชื่อ </p>
-              <input class="form-control" type="text" name="name" value="<?php echo $row->name; ?>" />
-            </th><br>
-            <th><p >นามสกุล </p>
-              <input class="form-control" type="text" name="lname" value="<?php echo $row->lname; ?>" />
-            </th><br>
-            <th><p >เบอร์โทรศัพท์</p>
-              <input class="form-control" type="text" name="phone" value="<?php echo $row->phone; ?>"  />
-            </th><br>
-            <th><p >เพศ</p>
-              <input class="form-control" type="text" name="gender" value="<?php echo $row->gender; ?>"  />
-            </th><br>
-            <th><p >โรคประจำตัว</p>
-              <input class="form-control" type="text" name="congenitaldisease" value="<?php echo $row->congenitaldisease; ?>"  />
-            </th><br>
-            <th><p >ยาที่แพ้</p>
-              <input class="form-control" type="text" name="allergic" value="<?php echo $row->allergic; ?>"  />
-            </th><br>
-            <th><p >กรุ๊ปเลือด</p>
-              <input class="form-control" type="text" name="blood" value="<?php echo $row->blood; ?>"  />
-            </th><br>
-            <th><p >อีเมล</p>
-              <input class="form-control" type="text" name="email" value="<?php echo $row->email; ?>"  />
-            </th><br>
-            <th><p >ผู้ติดต่อฉุกเฉิน</p>
-              <input class="form-control" type="text" name="emergencycontract" value="<?php echo $row->emergencycontract; ?>"  />
-            </th><br>
-            <th><p >เบอร์ผู้ติดต่อแุกเฉิน</p>
-              <input class="form-control" type="text" name="emergencyphone" value="<?php echo $row->emergencyphone; ?>"  />
-            </th><br>
-
+           
+           
+           
+           
+            <tr>
+            <?php
+      foreach($data as $row){
+    ?>
             
+           <div class="container">
+          <div class="radio-inline">
+            <td>
+            <b> <label><input type="radio" name="time" value="<?php echo $row->named; ?>" checked><?php echo $row->named; ?></label></b> 
+  </td>
+</div>
+      </div>
+ 
+
+           
+           <br>
+
+            </tr>
 
 
-            
+          
 
           </td>
         </tr>
@@ -98,15 +86,14 @@
       <?php
       }
       ?>
-      <br>
+      <br> 
       <center>
-      <input type="submit"  class="btn btn-success" value="อัพเดท"/>
-      <a type="button" href="../Main/profile" class="btn btn-warning">ย้อนกลับ</a>
+      <input type="submit" class="btn btn-success" value="ยืนยัน"/>
+      
       </center><br><br>
-    </form>  
-    </div>           
+    </form>             
     </div>
 <!--script-->
-
+  
 </body>
 </html>

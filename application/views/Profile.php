@@ -48,11 +48,11 @@ The above copyright notice and this permission notice shall be included in all c
   ?>
           <div class="row">
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">ชื่อ</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">ชื่อ</label>
           <h4> <?=$row->name;?></h4>
           </div>
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">นามสกุล</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">นามสกุล</label>
           <h4> <?=$row->lname;?></h4>
           </div>
           </div>
@@ -60,11 +60,11 @@ The above copyright notice and this permission notice shall be included in all c
             <hr/>
           <div class="row">
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">เบอร์โทรศัพท์</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">เบอร์โทรศัพท์</label>
           <h4> <?=$row->phone;?></h4>
           </div>
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">เพศ</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">เพศ</label>
           <h4> <?=$row->gender;?></h4>
           </div>
           </div>
@@ -73,11 +73,11 @@ The above copyright notice and this permission notice shall be included in all c
 
           <div class="row">
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">โรคประจำตัว</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">โรคประจำตัว</label>
           <h4> <?=$row->congenitaldisease;?></h4>
           </div>
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">ยาที่แพ้</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">ยาที่แพ้</label>
           <h4> <?=$row->allergic;?></h4>
           </div>
           </div>
@@ -86,11 +86,11 @@ The above copyright notice and this permission notice shall be included in all c
 
           <div class="row">
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">กรุ๊ปเลือด</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">กรุ๊ปเลือด</label>
           <h4> <?=$row->blood;?></h4>
           </div>
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">อีเมล</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">อีเมล</label>
           <h4> <?=$row->email;?></h4>
           </div>
           </div>
@@ -99,11 +99,11 @@ The above copyright notice and this permission notice shall be included in all c
 
           <div class="row">
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">ผู้ติดต่อฉุกเฉิน</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">ผู้ติดต่อฉุกเฉิน</label>
           <h4> <?=$row->emergencycontract;?></h4>
           </div>
           <div class="col-6">
-          <label style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">เบอร์ผู้ติดต่อฉุกเฉิน</label>
+          <label style="font-size : 20px; font-family: 'Prompt', sans-serif; ">เบอร์ผู้ติดต่อฉุกเฉิน</label>
           <h4> <?=$row->emergencyphone;?></h4>
           </div>
           </div>

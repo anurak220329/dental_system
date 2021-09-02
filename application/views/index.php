@@ -34,7 +34,7 @@ The above copyright notice and this permission notice shall be included in all c
     <div class="filter"></div>
     <div class="container">
       <div class="motto text-center">
-        <h1>ศูนน์ทันตกรรม</h1>
+        <h1>ศูนย์ทันตกรรม</h1>
         <h3>พร้อมดูแลคุณ</h3>
         <br />
         <a href="https://www.youtube.com/watch?v=AaDax5wqADw" class="btn btn-outline-neutral btn-round" target="blank"><i class="fa fa-play"></i>ดูวิดิโอ</a>

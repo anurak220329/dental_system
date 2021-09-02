@@ -8,8 +8,9 @@
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Prompt:wght@200&display=swap" rel="stylesheet">
   <!-- CSS Files -->
   <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="../../assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
@@ -34,7 +35,7 @@
  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
     <div class="container">
       <div class="navbar-translate">
-        <a class="navbar-brand" href="../Main/index2"  style="font-size : 24px;  font-family: 'Kanit', sans-serif; " rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" >
+        <a class="navbar-brand" href="../Main/index2"  style="font-size : 24px;  font-family: 'Prompt', sans-serif; " rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" >
           จองคิวทันตกรรม
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,29 +48,53 @@
         <ul class="navbar-nav">
         <?php 
         // All users list
+        if( $this->session->userdata('level') == 1)  {
+            ?>
+              <li class="nav-item">
+            <a href="../Main/showadmin" class="nav-link" style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-book-bookmark"></i> รายการจองคิว</a>
+          </li>
+        <li class="nav-item">
+            <a href="../Main/books" class="nav-link" style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-zoom-split"></i> ตรวจสอบการจองคิว</a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link"  style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-single-02"></i><?php echo $this->session->userdata('name'); ?></a>
+          </li>
+          <?php
+        }
+        ?>
+        <?php 
+        // All users list
         if( $this->session->userdata('level') == 2)  {
             ?>
-             <li class="nav-item">
-            <a href="../Main/books" class="nav-link" style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-zoom-split"></i> ตรวจสอบ</a>
+           
+          <li class="nav-item">
+            <a href="../Main/tests" class="nav-link" style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-time-alarm"></i> จองคิว</a>
           </li>
           <li class="nav-item">
-            <a href="../Main/book" class="nav-link" style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-time-alarm"></i> จองคิว</a>
+            <a href="../Main/showbook"  class="nav-link"  style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-book-bookmark"></i> รายการจอง</a>
           </li>
           <li class="nav-item">
-            <a href="../Main/showbook"  class="nav-link"  style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-book-bookmark"></i> รายการจอง</a>
+            <a href="../Main/showhistory" class="nav-link"  style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-layout-11"></i> ประวัติการจอง</a>
           </li>
           <li class="nav-item">
-            <a href="../Main/showhistory" class="nav-link"  style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-layout-11"></i> ประวัติการจอง</a>
+            <a href="../Main/profile" class="nav-link"  style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-single-02"></i><?php echo $this->session->userdata('name'); ?></a>
           </li>
           <?php
         } 
         ?>
+          <?php 
+        // All users list
+        if( $this->session->userdata('level') == 3)  {
+            ?>
           <li class="nav-item">
-            <a href="../Main/profile" class="nav-link"  style="font-size : 20px;  font-family: 'Kanit', sans-serif; "><i class="nc-icon nc-single-02"></i><?php echo $this->session->userdata('name'); ?></a>
+            <a href="../Main/profile" class="nav-link"  style="font-size : 20px; font-family: 'Prompt', sans-serif; "><i class="nc-icon nc-single-02"></i><?php echo $this->session->userdata('name'); ?></a>
           </li>
+          <?php
+        } 
+        ?>
       
           <li class="nav-item">
-            <a href="../Main/logout" class="nav-link"  style="font-size : 20px;  font-family: 'Kanit', sans-serif; ">ออกจากระบบ </a>
+            <a href="../Main/logout" class="nav-link"  style="font-size : 20px; font-family: 'Prompt', sans-serif; ">ออกจากระบบ </a>
           </li>
         </ul>
       </div>

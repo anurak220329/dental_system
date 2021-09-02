@@ -37,60 +37,78 @@
    
     <br /> <br /> <br />
     <div class="box3">
-    <?php
-      foreach($data as $row){
-    ?>
-    <form  method="post" action="../Main/backup" >
+   
+<h1>รายการเลือกทันตแพทย์</h1>
+<form  method="post" action="../Main/testt" >
+<th><p >ประเภททันตกรรม </p>
+            <select class="form-select" name="dentalname" aria-label="Default select example" onchange="javascript: if(this.value != '0') this.form.submit(); else alert('hello');">
+  <option  value="อุดฟัน" name="dentalname">อุดฟัน</option>
+  <option value="จัดฟัน" name="dentalname">จัดฟัน</option>
+  <option value="ฟอกสีฟัน" name="dentalname">ฟอกสีฟัน</option>
+  <option value="ขัดหินปูน" name="dentalname">ขัดหินปูน</option>
+  <option selected  value="ขัดหินปูน" name="dentalname"></option>
+</select>
+  </form>
+    <form  method="post" action="../Main/testtt" >
       <div class="container">
         <tr>
           <td>
         
-          <h1>ตรวจสอบข้อมูล</h1>
+          <?php
+      foreach($data as $row){
+    ?>
          
-            <input type="text" hidden name="idDental"  value="<?php echo $row->idDental; ?>" </th>
-
-            <input type="text" hidden name="idUser"  value="<?php echo $row->idUser; ?>" </th><br>
-            
-
-            <th><p >ประเภททันตกรรม </p>
-              <input class="form-control" type="text" name="dentalname" value="<?php echo $row->dentalname; ?>" readonly/>
-            </th><br>
-            <th><p >วันที่จอง </p>
-              <input class="form-control" type="text" name="date" value="<?php echo $row->date; ?>"  readonly/>
-            </th><br>
-            <th><p >เวลาที่จอง</p>
-              <input class="form-control" type="text" name="time" value="<?php echo $row->time; ?>"  readonly/>
-            </th><br>
-            <th><p>ชื่อแพทย์ </p>
-            <input class="form-control" type="text" name="nameDoctor" value="<?php echo $row->nameDoctor; ?>"  readonly/>
-            
-            </th><br>
-
-            
-
-
-            <th><p>สถานะ </p>
-             
-              <select class="form-control" id="status" style="font-size : 17px; color: #000000;" name="status" >
+          <input type="text" name="idDental"  value="<?php echo $row->idDental; ?>" hidden/> <br>
+        <br>
+         <?php
+      }
+      ?>
+            <th><p>แพทย์ </p>
+         <div class="form-group">
+   
+   <select multiple class="form-control" id="nameDoctor" name="nameDoctor">
+   <?php
+      foreach($data as $row){
+    ?>
+    
+     <option id="nameDoctor" name="nameDoctor"  value="<?php echo $row->named; ?>"><?php echo $row->named; ?>
+       </option>
+       <?php
+      }
+      ?>
+   </select>
+   
+   <?php
+      foreach($data as $row){
+    ?>
+    
+    <div class="input">
+   <input id="nameDoctor" name="namelist"  value="<?php echo $row->namelist; ?>" hidden />
+   </div>
+   <?php
+      }
+      ?>
+ </div>
+           
           
-         
-        <option id="status" name="status" value="สำเร็จแล้ว">สำเร็จแล้ว</option>
-        <option id="status" name="status" value="ยกเลิกการจอง">ยกเลิกการจอง</option>
-  
-  
-</select>
+           
+          
             </th><br>
+
+            
+
+
+           
+            
 
           </td>
         </tr>
       </div>
-      <?php
-      }
-      ?>
+     
       <br>
       <center>
-      <input type="submit" name="updates" class="btn btn-success" value="ยืนยัน"/>
-      <a type="button" href="../Main/showadmin" class="btn btn-warning">ย้อนกลับ</a>
+      <input type="submit" name="updat" class="btn btn-success" value="ยืนยันการจอง"/>
+     
       </center><br><br>
     </form>             
     </div>

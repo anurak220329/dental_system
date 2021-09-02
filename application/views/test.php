@@ -10,55 +10,53 @@
     <body style="background-color: #013A6B;
   background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);
   min-height: 500px;">
-    <?php
-	include_once "header.php";
-    
-?>
- <br></br><br></br><br></br>
- <div class="box3">
- <center> <h1>จองคิวทันตกรรม</h1> </center>
- <p>
+<p>
           เลือกวันที่ต้องการจองคิว 
-          <form method="post" action="../Main/testss">
-          
-        
+          <form method="post" action="../Main/tests">
           <div class="input" >
-         
         
-           <label for="Date_Of_Birth"></label>
-            <input type="date" name="dates"   onchange="javascript: if(this.value != '0') this.form.submit(); else alert('hello');" />
-         
+            <label for="Date_Of_Birth"></label>
+            <input type="date" name="date"   onchange="javascript: if(this.value != '0') this.form.submit(); else alert('hello');" />
+           
           
-         
           </div>
         </p>
-      
         </form>
-    <form method="post" action="../Main/booking">
-    
-     
-    
-     <br /> <br><br>
-     <p>
-          เลือกเวลาที่ต้องการจองคิว 
-          </p>
           <?php
+        
+        foreach($DT as $row){
+ ?>
+          
+          <div class="input" >
+        
+            <label for="Date_Of_Birth"></label>
+            <input type="date" name="date"  value="<?php echo $row->date; ?>" />
+            <input type="text" name="date"  value="<?php echo $row->time; ?>" />
+          
+          </div>
+        </p>
+        </form>
+        <?php
+         }
+         ?>
+        
+         <?php
         
         foreach($DTS as $row){
  ?>
-          <div class="input">
+       <div class="input">
            <br /> <br /> <br />
            <b> <div class="radio-inline">
          <?php
         
-        if( $row->time != '08:00:00' ) {
+        if( $row->time != '08:00:00')  {
            ?> 
   <label><input type="radio" name="time" value="08:00" checked>08:00</label>
-          <?php
-        }
+  <?php
+        } 
         ?>
-      
-       
+
+
           <?php
         if( $row->time != '08:30:00')  {
            ?> 
@@ -178,23 +176,17 @@
         ?>
 </div></b>
 </div>
+    
+  <?php
+         }
+         ?>
 
-<div class="input">
-            <label for="Date_Of_Birth"></label>
-            <input type="date" name="date" value="<?php echo $row->date; ?>" hidden />
-          </div>
-<?php
-        }
-        ?>
-<br><br>
-      
-        <br><br>
-        <input type="text" name="idUser" value="<?php echo $this->session->userdata('idUser'); ?>" hidden/>
-       
-      <center>  <button type="submit" class="btn btn-primary btn-round btn-lg">ถัดไป</button></center>
-      </div>
-      
-
+        
     </body>
-  
+    <script>
+    function DoSubmit(sel)
+{
+     if(sel.val()!='0') this.form.submit();
+}
+</script>
 </html>

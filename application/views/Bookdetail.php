@@ -19,15 +19,15 @@
       <div class="box1" >
      <center> <h1>รายการจองคิวทันตกรรม</h1> </center>
      <br /> <br />
-     <table class="table table-dark">
+     <table class="table table-striped table-dark">
   <thead>
     <tr>
-  
+    <th scope="col">รหัสการจอง</th>
       <th scope="col">รายการทันตกรรม</th>
       <th scope="col">วันที่จอง</th>
       <th scope="col">เวลาที่จอง</th>
       <th scope="col">ชื่อแพทย์</th>
-      <th scope="col">สถานะการจอง</th>
+      <th scope="col">สถานะ</th>
     </tr>
   </thead>
   <tbody>
@@ -36,7 +36,8 @@
        foreach($DT as $row){
 ?>
     <tr>
-      <th scope="row"><?php echo $row->dentalname ?></th>
+    <th scope="row"><?php echo $row->idDental ?></th>
+      <td><?php echo $row->dentalname ?></td>
       <td><?php echo $row->date ?></td>
       <td><?php echo $row->time ?></td>
       <td><?php echo $row->nameDoctor ?></td>

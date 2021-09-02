@@ -74,7 +74,7 @@
               <select class="form-control" id="status" style="font-size : 17px; color: #000000;" name="status" >
           
          
-        <option id="status" name="status" value="สำเร็จแล้ว">สำเร็จแล้ว</option>
+        <option id="status" name="status" value="<?php echo $row->status; ?>"><?php echo $row->status; ?></option>
         <option id="status" name="status" value="ยกเลิกการจอง">ยกเลิกการจอง</option>
   
   
@@ -90,11 +90,16 @@
       <br>
       <center>
       <input type="submit" name="updates" class="btn btn-success" value="ยืนยัน"/>
-      <a type="button" href="../Main/showadmin" class="btn btn-warning">ย้อนกลับ</a>
+      <a type="button" href="../Main/checkbooking" class="btn btn-warning">ย้อนกลับ</a>
       </center><br><br>
     </form>             
     </div>
 <!--script-->
 
 </body>
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 </html>

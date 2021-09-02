@@ -15,9 +15,14 @@ class Main extends CI_Controller {
 	{
 		$this->load->view('index');
 	}
+	public function test()
+	{
+		$this->load->view('test');
+	}
 	public function book()
 	{
-		$this->load->view('Book');
+		$result['DT'] = $this->DT->get_d();
+		$this->load->view('Book', $result);
 	}
 	public function books()
 	{
@@ -33,6 +38,20 @@ class Main extends CI_Controller {
 		$idUser =  $this->session->userdata('idUser');
 		$result['DT'] = $this->DT->get_book($idUser);
 		$this->load->view('Bookdetail',$result);
+		
+	}
+	public function showbooks()
+	{
+		$idUser =  $this->session->userdata('idUser');
+		$result['DT'] = $this->DT->get_bookss($idUser);
+		$this->load->view('Bookdetails',$result);
+		
+	}
+	public function showbookchoose()
+	{
+		$idUser =  $this->session->userdata('idUser');
+		$result['DT'] = $this->DT->get_books($idUser);
+		$this->load->view('bookchoose',$result);
 		
 	}
 
@@ -57,6 +76,7 @@ class Main extends CI_Controller {
 		$result['DT'] = $this->DT->get_admin();
 		$this->load->view('Admin',$result);
 	}
+
 
 	public function profile()
 	{
@@ -124,9 +144,11 @@ class Main extends CI_Controller {
 		$date    = $this->input->post('date',TRUE);
 		$time    = $this->input->post('time',TRUE);
 		$checkdate = $this->DT->checkdate($date,$time);
+		
 		$data1  = $checkdate->row_array();
 		$date1  = $data1['date'];
 		$time1  = $data1['time'];
+		$nameDoctor1 = $data1['nameDoctor'];
 		$day = date("20y-m-d");
 	
 		$data = array(
@@ -134,32 +156,91 @@ class Main extends CI_Controller {
 			'date' => $this->input->post("date"),
 			'time' => $this->input->post("time"),
 			'idUser' => $this->input->post("idUser"),
-			'status' => ("รอเจ้าหน้าที่ตรวจสอบ"),
-			'nameDoctor' => ("รอเจ้าหน้าที่ระบุ"),
+			'status' => ("จองสำเร็จ"),
+			'nameDoctor' => $this->input->post("nameDoctor"),
 		);
 
 		if($this->input->post("date") < $day){
-			
-			
-			$this->load->view('Book');
+			$this->book();
 			echo '<script>alert("ไม่สามารถจองย้อนหลังได้ค่ะ")</script>'; 
+		}
+		else if($this->input->post("date") == $date1 && $this->input->post("time") == $time1 && $this->input->post("nameDoctor") == $nameDoctor1){
+			$this->book();
+			echo '<script>alert("คิวหมอไม่ว่างค่ะ")</script>'; 
 		}
 		else if($this->input->post("date")!= $date1 && $this->input->post("time")!== $time1){
 			$this->DT->insert_dentalitems($data);
 			
 			$this->showbook();
-			echo '<script>alert("จองคิวเรียบร้อย")</script>'; 
+			echo '<script>alert("จองคิวสำเร็จค่ะ")</script>'; 
 		}else {
 			echo '<script>alert("วันและเวลานี้มีคนจองแล้วค่ะ !")</script>'; 
 			echo '<script>alert("กรุณาลองเปลี่ยนเวลาการจองค่ะ")</script>'; 
-			$this->load->view('Book');
+			$this->book();
 		}
 
 	}
 
-	public function checkbooking(){
+	public function bookingss(){
 		$date    = $this->input->post('date',TRUE);
-		$result['DT'] = $this->DT->check_book($date);
+		$time    = $this->input->post('time',TRUE);
+		$checkdate = $this->DT->checkdate($date,$time);
+		
+		$data1  = $checkdate->row_array();
+		$date1  = $data1['date'];
+		$time1  = $data1['time'];
+		
+		$day = date("20y-m-d");
+	
+		$data = array(
+			
+			'date' => $this->input->post("date"),
+			'time' => $this->input->post("time"),
+			'idUser' => $this->input->post("idUser"),
+			'status' => ("กำลังจอง"),
+			
+		);
+
+		if($this->input->post("date") < $day){
+			$this->book();
+			echo '<script>alert("ไม่สามารถจองย้อนหลังได้ค่ะ")</script>'; 
+		}
+		
+		else if($this->input->post("date")!= $date1 && $this->input->post("time")!== $time1){
+			$this->DT->insert_dentalitems($data);
+			
+			$this->showbooks();
+			
+		}else {
+			echo '<script>alert("วันและเวลานี้มีคนจองแล้วค่ะ !")</script>'; 
+			echo '<script>alert("กรุณาลองเปลี่ยนเวลาการจองค่ะ")</script>'; 
+			$this->book();
+		}
+
+	}
+
+	public function bookings()
+	{
+	$idDental=$this->input->get('idDental');
+	$result['data']=$this->DT->get_choose($idDental);
+	$this->load->view('booking',$result);
+	
+	
+	}
+	public function choose()
+	{
+	$idDental=$this->input->post('idDental');
+	$date= $this->input->post('date',TRUE);
+	$time= $this->input->post('time',TRUE);
+	$result['data']=$this->DT->get_choosedoc($idDental, $date, $time);
+	$this->load->view('bookdoc',$result);
+	
+	
+	}
+
+	public function checkbooking(){
+		$idDental    = $this->input->post('idDental',TRUE);
+		$result['DT'] = $this->DT->check_book($idDental);
 		$this->load->view('checkbook',$result);
 		
 
@@ -181,6 +262,8 @@ class Main extends CI_Controller {
 		}
 	}
 
+	
+
 	public function finish()
 	{
 	$idDental=$this->input->get('idDental');
@@ -189,6 +272,78 @@ class Main extends CI_Controller {
 	
 		
 	}
+
+	public function finishcheck()
+	{
+	$idDental=$this->input->get('idDental');
+	$result['data']=$this->DT->get_finishcheck($idDental);
+	$this->load->view('Finishcheck',$result);
+	
+		
+	}
+
+	public function finishs()
+	{
+	$idDental=$this->input->get('idDental');
+	$result['data']=$this->DT->get_finishs($idDental);
+	$this->load->view('Finishs',$result);
+	
+	if($this->input->post('updat'))
+		{
+		$nameDoctor=$this->input->post('nameDoctor');
+		$status=("จองแล้ว");
+		$namelist=$this->input->post('namelist');
+		$this->DT->update_record($nameDoctor,$status,$namelist,$idDental);
+		echo "อัพเดทเสร็จเรียบร้อย !";
+		}
+		
+	}
+	
+	public function tests(){
+		$date    = $this->input->post('dates',TRUE);
+		$result['DTS'] = $this->DT->testdate($date);
+		$this->load->view('Book',$result);
+		
+
+	}
+
+	public function testss(){
+		$date    = $this->input->post('dates',TRUE);
+		$result['DTS'] = $this->DT->testdate($date);
+		$this->load->view('Book1',$result);
+		
+
+	}
+	public function testt(){
+		$idDental=$this->input->get('idDental');
+		$dentalname    = $this->input->post('dentalname',TRUE);
+		$result['data'] = $this->DT->testdates($dentalname);
+		$this->load->view('Finishs',$result);
+		
+		if($this->input->post('updat'))
+		{
+		$nameDoctor=$this->input->post('nameDoctor');
+		$status=("จองสำเร็จ");
+		$namelist=$this->input->post('namelist');
+		$idDental=$this->input->post('idDental');
+		$this->DT->update_record($nameDoctor,$status,$namelist,$idDental);
+		$this->showbook();
+		echo '<script>alert("จองคิวสำเร็จค่ะ")</script>'; 
+		}
+
+	}
+
+	public function testtt(){
+	$nameDoctor=$this->input->post('nameDoctor');
+		$status=("จองสำเร็จ");
+		$namelist=$this->input->post('namelist');
+		$idDental=$this->input->post('idDental');
+		$this->DT->update_record($nameDoctor,$status,$namelist,$idDental);
+		$this->showbook();
+		echo '<script>alert("จองคิวสำเร็จค่ะ")</script>'; 
+	}
+
+
 
 	public function backup(){
 		$idDental=$this->input->post('idDental');
